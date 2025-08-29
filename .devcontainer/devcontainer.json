@@ -1,0 +1,33 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+{
+	"name": "Alpine",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"image": "mcr.microsoft.com/devcontainers/base:debian-12",
+	"workspaceFolder": "/workspace",
+	"remoteUser": "vscode",
+	"customizations": {
+		"vscode": {
+		"settings": {
+			"terminal.integrated.defaultProfile.linux": "bash",
+			"extensions": [
+			"ms-vscode.vscode-typescript-next",
+			"ms-python.python",
+			"ms-dotnettools.csharp",
+			"dbaeumer.vscode-eslint",
+			"Github.copilot",
+			"GitHub.copilot-chat"
+			]
+		}
+		}
+	},
+	"mounts": [
+		"source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
+		"source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
+	],
+	"postCreateCommand": "echo '✅ Dev container ready for testing.'",
+	"features": {
+		"ghcr.io/devcontainers/features/node:1": {
+			"version": "20"
+		}
+	}
+}
